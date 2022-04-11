@@ -106,18 +106,7 @@ scene.add(particles)
 /**
  * Sizes
  */
-let canv = document.querySelector('#canvas')
 
-function resizeRendererToDisplaySize(renderer) {
-    // const canvas = renderer.domElement;
-    const width = canv.clientWidth;
-    const height = canv.clientHeight;
-    const needResize = canv.width !== width || canv.height !== height;
-    if (needResize) {
-        renderer.setSize(width, height, false);
-    }
-    return needResize;
-}
  const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
@@ -125,19 +114,23 @@ function resizeRendererToDisplaySize(renderer) {
 
 window.addEventListener('resize', () =>
 {
-    // canvas.clientWidth / canvas.clientHeight
+    
     // Update sizes
     
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
-
+    
     // Update camera
-    // camera.aspect = sizes.width / sizes.height
-    if (resizeRendererToDisplaySize(renderer)) {
-        const canvas = renderer.domElement;
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
+    if (sizes.width <= 900){
+        console.log(sizes.width)
+        camera.position.z = 20
     }
+    else {
+        console.log(sizes.width)
+        camera.position.z = 6
+    }
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix();
     
 
 
@@ -248,6 +241,8 @@ const tick = () =>
     const parallaxY = - cursor.y * 0.5
     cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * 5 * deltaTime
     cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * 5 * deltaTime
+
+    
     
     // Render
     renderer.render(scene, camera)
