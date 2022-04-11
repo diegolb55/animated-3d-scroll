@@ -121,14 +121,14 @@ window.addEventListener('resize', () =>
     sizes.height = window.innerHeight
     
     // Update camera
-    if (sizes.width <= 900){
-        console.log(sizes.width)
-        camera.position.z = 20
-    }
-    else {
-        console.log(sizes.width)
-        camera.position.z = 6
-    }
+    // if (sizes.width <= 900){
+    //     console.log(sizes.width)
+    //     camera.position.z = 20
+    // }
+    // else {
+    //     console.log(sizes.width)
+    //     camera.position.z = 6
+    // }
     camera.aspect = sizes.width / sizes.height
     camera.updateProjectionMatrix();
     
